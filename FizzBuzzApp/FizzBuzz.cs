@@ -15,6 +15,10 @@ namespace FizzBuzzApp
 
         public string check(int input)
         {
+            if ((input % 3)==0)
+            {
+                return "fizz";
+            }
             return input.ToString();
         }
     }

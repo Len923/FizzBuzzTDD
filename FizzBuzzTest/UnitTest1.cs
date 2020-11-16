@@ -25,11 +25,22 @@ namespace FizzBuzzTest
         [TestCase(7)]
         [TestCase(8)]
         [TestCase(10)]
-        public void FizzBuzzReturnsNumbersOutsideThreeFiveAsNumbers(int input)
+        public void FizzBuzzReturnsNumbersOutsideThreeFiveAsStrings(int input)
         {
             string output = fizzBuzz.check(input);
 
             Assert.AreEqual(input.ToString(), output);
         }
+
+        [TestCase(3)]
+        [TestCase(6)]
+        [TestCase(9)]
+        public void FizzBuzzReturnsFizzInThree(int input)
+        {
+            string output = fizzBuzz.check(input);
+
+            Assert.AreEqual("fizz", output);
+        }
+
     }
 }
