@@ -24,7 +24,7 @@ namespace FizzBuzzTest
         [TestCase(4)]
         [TestCase(7)]
         [TestCase(8)]
-        [TestCase(10)]
+        [TestCase(11)]
         public void FizzBuzzReturnsNumbersOutsideThreeFiveAsStrings(int input)
         {
             string output = fizzBuzz.check(input);
@@ -35,11 +35,29 @@ namespace FizzBuzzTest
         [TestCase(3)]
         [TestCase(6)]
         [TestCase(9)]
-        public void FizzBuzzReturnsFizzInThree(int input)
+        public void FizzBuzzReturnsFizzOnThree(int input)
         {
             string output = fizzBuzz.check(input);
 
             Assert.AreEqual("fizz", output);
+        }
+
+        [TestCase(5)]
+        [TestCase(10)]
+        public void FizzBuzzReturnsBuzzOnFive(int input)
+        {
+            string output = fizzBuzz.check(input);
+
+            Assert.AreEqual("buzz", output);
+        }
+
+        [TestCase(15)]
+        [TestCase(30)]
+        public void FizzBuzzReturnsFizzBuzzOnThreeAndFive(int input)
+        {
+            string output = fizzBuzz.check(input);
+
+            Assert.AreEqual("fizzbuzz", output);
         }
 
     }
