@@ -7,22 +7,30 @@ namespace FizzBuzzApp
     public class FizzBuzz
     {
         public int length;
+        public int startValue;
+        public static readonly List<KeyValuePair<int, string>> FIZZBUZZ = new List<KeyValuePair<int, string>>()
+        {
+            new KeyValuePair<int, string>(3,"fizz"),
+            new KeyValuePair<int,string>(5,"buzz")
+        };
+        public List<KeyValuePair<int, string>> format = new List<KeyValuePair<int, string>>(FIZZBUZZ);
 
-        public FizzBuzz(int length)
+        public FizzBuzz(int length = 100, int startValue = 1)
         {
             this.length = length;
+            this.startValue = startValue;
         }
 
         public string CheckFizzBuzz(int input)
         {
             string output = "";
-            if ((input % 3)==0)
+
+            foreach(KeyValuePair<int,string> option in format)
             {
-                output += "fizz";
-            }
-            if((input % 5) == 0)
-            {
-                output += "buzz";
+                if ((input % option.Key) == 0)
+                {
+                    output += option.Value;
+                }
             }
             if (output.Equals(""))
             {
@@ -36,8 +44,9 @@ namespace FizzBuzzApp
 
         public string[] StartFizzBuzz()
         {
+            format.Sort((x,y) => x.Key.CompareTo(y.Key));
             List<string> output = new List<string>();
-            for(int i = 1; i <= length; i++)
+            for(int i = startValue; i < startValue + length; i++)
             {
                 output.Add(CheckFizzBuzz(i));
             }

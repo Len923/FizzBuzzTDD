@@ -1,5 +1,6 @@
 using FizzBuzzApp;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace FizzBuzzTest
 {
@@ -16,7 +17,7 @@ namespace FizzBuzzTest
         [SetUp]
         public void Setup()
         {
-            fizzBuzz = new FizzBuzz(100);
+            fizzBuzz = new FizzBuzz();
         }
 
         [TestCase(1)]
@@ -72,5 +73,40 @@ namespace FizzBuzzTest
             Assert.IsTrue(output.Length == 15);
             Assert.AreEqual(expected, output);
         }
+
+        [Test]
+        public void AddedOptionsGetAddedInCorrectOrder()
+        {
+            fizzBuzz.startValue = 30;
+            fizzBuzz.length = 1;
+
+            KeyValuePair<int, string> pop = new KeyValuePair<int, string>(2, "pop");
+            fizzBuzz.format.Add(pop);
+
+            string[] expected = new string[] { "popfizzbuzz" };
+
+            string[] output = fizzBuzz.StartFizzBuzz();
+
+            Assert.IsTrue(output.Length == 1);
+            Assert.AreEqual(expected, output);
+        }
+
+        [Test]
+        public void SpecialFizzBuzzAlsoWorks()
+        {
+            fizzBuzz.length = 15;
+
+            string[] expected = new string[] { "1", "pop", "fizz", "pop", "buzz", "popfizz", "7", "pop", "fizz", "popbuzz", "11", "popfizz", "13", "pop", "fizzbuzz" };
+
+            KeyValuePair<int, string> pop = new KeyValuePair<int, string>(2, "pop");
+            fizzBuzz.format.Add(pop);
+
+            string[] output = fizzBuzz.StartFizzBuzz();
+
+            Assert.IsTrue(output.Length == 15);
+            Assert.AreEqual(expected, output);
+        }
+
+
     }
 }
