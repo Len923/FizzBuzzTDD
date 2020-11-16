@@ -27,7 +27,7 @@ namespace FizzBuzzTest
         [TestCase(11)]
         public void FizzBuzzReturnsNumbersOutsideThreeFiveAsStrings(int input)
         {
-            string output = fizzBuzz.check(input);
+            string output = fizzBuzz.CheckFizzBuzz(input);
 
             Assert.AreEqual(input.ToString(), output);
         }
@@ -37,7 +37,7 @@ namespace FizzBuzzTest
         [TestCase(9)]
         public void FizzBuzzReturnsFizzOnThree(int input)
         {
-            string output = fizzBuzz.check(input);
+            string output = fizzBuzz.CheckFizzBuzz(input);
 
             Assert.AreEqual("fizz", output);
         }
@@ -46,7 +46,7 @@ namespace FizzBuzzTest
         [TestCase(10)]
         public void FizzBuzzReturnsBuzzOnFive(int input)
         {
-            string output = fizzBuzz.check(input);
+            string output = fizzBuzz.CheckFizzBuzz(input);
 
             Assert.AreEqual("buzz", output);
         }
@@ -55,10 +55,22 @@ namespace FizzBuzzTest
         [TestCase(30)]
         public void FizzBuzzReturnsFizzBuzzOnThreeAndFive(int input)
         {
-            string output = fizzBuzz.check(input);
+            string output = fizzBuzz.CheckFizzBuzz(input);
 
             Assert.AreEqual("fizzbuzz", output);
         }
 
+        [Test]
+        public void StartFizzBuzzReturnsFifteenStrings()
+        {
+            fizzBuzz.length = 15;
+
+            string[] expected = new string[] { "1", "2", "fizz", "4", "buzz", "fizz", "7", "8", "fizz", "buzz", "11", "fizz", "13", "14", "fizzbuzz" };
+
+            string[] output = fizzBuzz.StartFizzBuzz();
+
+            Assert.IsTrue(output.Length == 15);
+            Assert.AreEqual(expected, output);
+        }
     }
 }

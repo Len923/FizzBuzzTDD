@@ -6,14 +6,14 @@ namespace FizzBuzzApp
 {
     public class FizzBuzz
     {
-        private int length;
+        public int length;
 
         public FizzBuzz(int length)
         {
             this.length = length;
         }
 
-        public string check(int input)
+        public string CheckFizzBuzz(int input)
         {
             string output = "";
             if ((input % 3)==0)
@@ -32,6 +32,16 @@ namespace FizzBuzzApp
             {
                 return output;
             }
+        }
+
+        public string[] StartFizzBuzz()
+        {
+            List<string> output = new List<string>();
+            for(int i = 1; i <= length; i++)
+            {
+                output.Add(CheckFizzBuzz(i));
+            }
+            return output.ToArray();
         }
     }
 }
